@@ -35,7 +35,7 @@ const Register = () => {
 	return (
 		<div className="flex h-screen">
 			<div className="m-auto w-1/2 pt-10">
-				<h1>Account Register</h1>
+				<h1>Registration</h1>
 				<Form onSubmit={(e) => handleSubmit(e)}>
 					<FormGroup>
 						<Label for="username">Username</Label>
