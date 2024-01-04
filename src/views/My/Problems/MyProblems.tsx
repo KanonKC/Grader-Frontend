@@ -16,17 +16,31 @@ const MyProblems = () => {
 	const accountId = String(localStorage.getItem("account_id"));
 	const navigate = useNavigate();
 
+	const [allProblems, setAllProblems] = useState<ProblemPopulateTestcases[]>([]);
 	const [problems, setProblems] = useState<ProblemPopulateTestcases[]>([]);
 	const {section,setSection} = useContext(NavSidebarContext)
+	const [searchInput, setSearchInput] = useState("");
 
 	useEffect(() => {
 		ProblemService.getAllAsCreator(accountId).then((response) => {
+			setAllProblems(response.data.problems);
 			setProblems(response.data.problems);
-			console.log(response.data.problems);
 		});
 
 		setSection("PROBLEMS")
 	}, []);
+
+	useEffect(() => {
+		if (searchInput.length > 0) {
+			const filteredProblems = allProblems.filter((problem) =>
+				problem.title.toLowerCase().includes(searchInput.toLowerCase())
+			);
+			setProblems(filteredProblems);
+		}
+		else {
+			setProblems(allProblems);
+		}
+	}, [searchInput]);
 
 	return (
 		<NavbarSidebarLayout>
@@ -38,7 +52,7 @@ const MyProblems = () => {
 						</h1>
 					</div>
 					<div className="w-9/12 md:w-7/12">
-						<Input placeholder="Search ..." />
+						<Input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search ..." />
 					</div>
 					<div>
 						<Button onClick={() => navigate("/my/problems/create")}>

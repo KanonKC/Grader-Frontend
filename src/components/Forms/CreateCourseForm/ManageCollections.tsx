@@ -121,21 +121,9 @@ const ManageCollections = ({
 				),
 			});
 
-			// console.log({
-			// 	...allCollections,
-			// 	...transformCollectionPopulateProblemSecureModel2CollectionHashedTable(
-			// 		createRequest.course.collections.map(
-			// 			(cc) => cc.collection
-			// 		) as CollectionModel[]
-			// 	),
-			// })
-
-			console.log('ccc',
-				createRequest.course.collections.map((cc) => cc.collection)
-			);
 		}
 		console.log(createRequest.course);
-	}, [createRequest, allCollections]);
+	}, [createRequest]);
 
 	useEffect(() => {
 		if (initial) {
