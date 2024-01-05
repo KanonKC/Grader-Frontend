@@ -1,34 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { Card, CardContent, CardTitle } from "../../shadcn/Card";
-import { Button } from "../../shadcn/Button";
 import {
-	Check,
-	CheckCircle2,
 	FileSpreadsheet,
 	Folder,
-	Pencil,
 	PencilIcon,
-	Trash,
-	X,
+	Trash
 } from "lucide-react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CollectionPopulateProblemSecureModel } from "../../../types/models/Collection.model";
 import {
 	ProblemModel,
 	ProblemPopulateTestcases,
 	ProblemSecureModel,
 	TestcaseModel,
 } from "../../../types/models/Problem.model";
-import { readableDateFormat } from "../../../utilities/ReadableDateFormat";
+import DeleteProblemConfirmationDialog from "../../DeleteProblemConfirmationDialog";
+import { Card } from "../../shadcn/Card";
 import {
 	ContextMenu,
-	ContextMenuTrigger,
 	ContextMenuContent,
 	ContextMenuItem,
+	ContextMenuTrigger,
 } from "../../shadcn/ContextMenu";
-import DeleteProblemConfirmationDialog from "../../DeleteProblemConfirmationDialog";
-import Checkmark from "../../Checkmark";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../../shadcn/Tooltip";
-import { CollectionModel, CollectionPopulateProblemSecureModel } from "../../../types/models/Collection.model";
 
 const checkRuntimeStatus = (testcases: TestcaseModel[]) => {
 	for (const testcase of testcases) {

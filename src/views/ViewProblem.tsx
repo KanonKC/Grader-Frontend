@@ -1,52 +1,19 @@
-import React, { useEffect, useState } from "react";
-import NavbarMenuLayout from "../layout/NavbarMenuLayout";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Separator } from "../components/shadcn/Seperator";
-import PlateEditor from "../components/PlateEditor";
-import ReadOnlyPlate from "../components/ReadOnlyPlate";
-import { Editor as MonacoEditor } from "@monaco-editor/react";
-import { Label } from "../components/shadcn/Label";
-import { Combobox } from "../components/shadcn/Combobox";
-import { ProgrammingLanguageOptions } from "../constants/ProgrammingLanguage";
-import { Button } from "../components/shadcn/Button";
-import TestcasesGradingIndicator from "../components/TestcasesGradingIndicator";
 import { styled } from "styled-components";
-import { ProblemService } from "../services/Problem.service";
-import { ProblemPoplulateCreatorModel } from "../types/models/Problem.model";
-import { SubmissionService } from "../services/Submission.service";
-import {
-	GetSubmissionByAccountProblemResponse,
-	SubmissionModel,
-	SubmissionPopulateSubmissionTestcasesSecureModel,
-} from "../types/models/Submission.model";
-import { SubmitProblemResponse } from "../types/apis/Submission.api";
-import PreviousSubmissionsCombobox from "../components/PreviousSubmissionsCombobox";
-import { SubmitProblemResponse2GetSubmissionByAccountProblemResponse } from "../types/adapters/Submission.adapter";
-import { ELEMENT_PARAGRAPH } from "@udecode/plate-paragraph";
-import {
-	ArrowLeft,
-	ChevronLeftIcon,
-	ChevronLeftSquareIcon,
-	Loader2,
-} from "lucide-react";
-import { readableDateFormat } from "../utilities/ReadableDateFormat";
 import ProblemViewLayout, {
 	OnSubmitProblemViewLayoutCallback,
 } from "../components/ProblemViewLayout";
+import NavbarMenuLayout from "../layout/NavbarMenuLayout";
+import { ProblemService } from "../services/Problem.service";
+import { SubmissionService } from "../services/Submission.service";
+import { ProblemPoplulateCreatorModel } from "../types/models/Problem.model";
+import {
+	GetSubmissionByAccountProblemResponse,
+	SubmissionPopulateSubmissionTestcasesSecureModel
+} from "../types/models/Submission.model";
 
-const handleDeprecatedDescription = (description: string): string => {
-	if (description[0] === "[") {
-		return description;
-	} else {
-		return JSON.stringify([
-			{
-				id: "1",
-				type: ELEMENT_PARAGRAPH,
-				children: [{ text: description }],
-			},
-		]);
-	}
-};
+
 
 const ViewProblem = () => {
 	const navigate = useNavigate();

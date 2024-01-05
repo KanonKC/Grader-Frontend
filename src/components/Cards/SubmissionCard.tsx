@@ -1,11 +1,10 @@
-import React from "react";
-import { Card } from "../shadcn/Card";
-import { FileSpreadsheet, Puzzle, StepForward } from "lucide-react";
-import { Button } from "../shadcn/Button";
-import { SubmissionPopulateSubmissionTestcaseAndProblemSecureModel } from "../../types/models/Submission.model";
-import TestcasesGradingIndicator from "../TestcasesGradingIndicator";
-import { readableDateFormat } from "../../utilities/ReadableDateFormat";
+import { FileSpreadsheet, StepForward } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { SubmissionPopulateSubmissionTestcaseAndProblemSecureModel } from "../../types/models/Submission.model";
+import { readableDateFormat } from "../../utilities/ReadableDateFormat";
+import TestcasesGradingIndicator from "../TestcasesGradingIndicator";
+import { Button } from "../shadcn/Button";
+import { Card } from "../shadcn/Card";
 
 const SubmissionCard = ({
 	submission,

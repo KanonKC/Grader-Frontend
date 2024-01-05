@@ -1,31 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import NavbarMenuLayout from "../layout/NavbarMenuLayout";
-import { useParams } from "react-router-dom";
-import { TopicService } from "../services/Topic.service";
-import {
-	TopicCollectionPopulateCollectionPopulateCollectionProblemPopulateProblemPopulateAccountAndSubmissionPopulateSubmissionTestcasesSecureModel,
-	TopicPopulateTopicCollectionPopulateCollectionPopulateCollectionProblemPopulateProblemPopulateAccountAndSubmissionPopulateSubmissionTestcasesSecureModel,
-} from "../types/models/Topic.model";
-import ReadOnlyPlate from "../components/ReadOnlyPlate";
-import {
-	DummyEditorValue,
-	EmptyEditorValue,
-} from "../constants/DummyEditorValue";
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "../components/shadcn/Accordion";
 import { LibraryBig } from "lucide-react";
-import { Card } from "../components/shadcn/Card";
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import TopicCollectionAccordionCard from "../components/Cards/CollectionCards/TopicCollectionAccordionCard";
-import CardContainer from "../components/CardContainer";
-import { ScrollArea } from "../components/shadcn/ScrollArea";
-import TopicCollectionsAccordion from "../components/TopicCollectionsAccordion";
-import { CollectionPopulateCollectionProblemPopulateProblemPopulateAccountAndSubmissionPopulateSubmissionTestcasesSecureModel } from "../types/models/Collection.model";
-import CourseNavbarSidebarLayout from "../layout/CourseNavbarSidebarLayout";
+import ReadOnlyPlate from "../components/ReadOnlyPlate";
 import { CourseNavSidebarContext } from "../contexts/CourseNavSidebarContexnt";
+import CourseNavbarSidebarLayout from "../layout/CourseNavbarSidebarLayout";
 
 const ViewCourse = () => {
 	const accountId = String(localStorage.getItem("account_id"));

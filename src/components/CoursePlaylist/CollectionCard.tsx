@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent, CardDescription } from "../shadcn/Card";
 
 const MyCollectionCard = () => {

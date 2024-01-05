@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { Card, CardContent } from "../../shadcn/Card";
 import { Folder, LibraryBig } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TopicPopulateTopicCollectionPopulateCollectionModel } from "../../../types/models/Topic.model";
 import { readableDateFormat } from "../../../utilities/ReadableDateFormat";
-import { BASE_URL } from "../../../constants/BackendBaseURL";
-import { useNavigate } from "react-router-dom";
+import { Card, CardContent } from "../../shadcn/Card";
 
 const MyCourseCard = ({
 	course,

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Card, CardContent } from "../shadcn/Card";
-import { useNavigate } from "react-router-dom";
 import { User, Users } from "lucide-react";
-import { readableDateFormat } from "../../utilities/ReadableDateFormat";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { GroupPopulateGroupMemberPopulateAccountSecureModel } from "../../types/models/Group.model";
+import { readableDateFormat } from "../../utilities/ReadableDateFormat";
+import { Card, CardContent } from "../shadcn/Card";
 
 const MyGroupCard = ({
     group
@@ -12,10 +12,6 @@ const MyGroupCard = ({
 }) => {
 	const navigate = useNavigate();
 	const [mouseOver, setMouseOver] = useState(false);
-
-	const iconCustomStyle = () => {
-		return `mr-2 text-[${group?.color}]`
-	}
 
 	return (
 		<Card

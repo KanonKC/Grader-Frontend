@@ -1,16 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ProblemPoplulateCreatorModel } from "../types/models/Problem.model";
-import { GetSubmissionByAccountProblemResponse } from "../types/models/Submission.model";
-import { ProblemService } from "../services/Problem.service";
-import { SubmissionService } from "../services/Submission.service";
-import NavbarMenuLayout from "../layout/NavbarMenuLayout";
 import ProblemViewLayout, {
 	OnSubmitProblemViewLayoutCallback,
 } from "../components/ProblemViewLayout";
 import CourseNavbarSidebarLayout from "../layout/CourseNavbarSidebarLayout";
-import { CourseNavSidebarContext } from "../contexts/CourseNavSidebarContexnt";
-import { TopicService } from "../services/Topic.service";
+import { ProblemService } from "../services/Problem.service";
+import { SubmissionService } from "../services/Submission.service";
+import { ProblemPoplulateCreatorModel } from "../types/models/Problem.model";
+import { GetSubmissionByAccountProblemResponse } from "../types/models/Submission.model";
 
 const ViewCourseProblem = () => {
 	const accountId = String(localStorage.getItem("account_id"));

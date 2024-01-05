@@ -1,19 +1,16 @@
-import React from "react";
-import { Card } from "../../shadcn/Card";
+import { Check, FileCheck, Folder } from "lucide-react";
+import { CollectionPopulateCollectionProblemPopulateProblemPopulateAccountAndSubmissionPopulateSubmissionTestcasesSecureModel } from "../../../types/models/Collection.model";
+import ReadOnlyPlate from "../../ReadOnlyPlate";
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
 } from "../../shadcn/Accordion";
-import { Check, FileCheck, FileSpreadsheet, Folder } from "lucide-react";
-import PublicProblemCard from "../ProblemCards/PublicProblemCard";
-import { CollectionPopulateCollectionProblemPopulateProblemPopulateAccountAndSubmissionPopulateSubmissionTestcasesSecureModel } from "../../../types/models/Collection.model";
-import CardContainer from "../../CardContainer";
+import { Badge } from "../../shadcn/Badge";
+import { Card } from "../../shadcn/Card";
 import { ScrollArea } from "../../shadcn/ScrollArea";
 import PublicProblemMiniCard from "../ProblemCards/PublicProblemMiniCard";
-import ReadOnlyPlate from "../../ReadOnlyPlate";
-import { Badge } from "../../shadcn/Badge";
 
 const isPassed = (collection: CollectionPopulateCollectionProblemPopulateProblemPopulateAccountAndSubmissionPopulateSubmissionTestcasesSecureModel):boolean => {
 	return collection.problems.filter(
