@@ -163,7 +163,12 @@ const columns: ColumnDef<ProblemPopulateTestcases>[] = [
 
 	{
 		accessorKey: "difficulty",
-		header: "Difficulty",
+		header: ({ column }) => (
+			<DataTableSortableLayout onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+				Difficulty
+			</DataTableSortableLayout>
+
+		),
 		cell: ({ row }) => (
 			<DifficultyBadge level={row.original.difficulty}/>
 		),

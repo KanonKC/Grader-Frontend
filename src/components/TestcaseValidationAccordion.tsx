@@ -1,4 +1,4 @@
-import { TestcaseStatusIndicatorColor } from "../constants/TestcaseStatusIndicatorColor";
+import { FileDown } from "lucide-react";
 import { RuntimeResult } from "../types/apis/Problem.api";
 import { TestcaseModel } from "../types/models/Problem.model";
 import {
@@ -10,6 +10,37 @@ import {
 import { Badge } from "./shadcn/Badge";
 import { Label } from "./shadcn/Label";
 import { Textarea } from "./shadcn/Textarea";
+
+const minimizer = (text: string | null): string => {
+	const LIMIT = 250;
+
+	if (!text) return "";
+
+	if (text.length > LIMIT) {
+		return text.slice(0, LIMIT) + ` ... (${text.length - LIMIT} more)`;
+	}
+	return text;
+};
+
+const downloadTextfile = (filename: string, text: string | null) => {
+	if (!text) return;
+
+	const element = document.createElement("a");
+	const file = new Blob([text], { type: "text/plain" });
+	element.href = URL.createObjectURL(file);
+	element.download = filename;
+	document.body.appendChild(element); // Required for this to work in FireFox
+	element.click();
+};
+
+const DownloadMiniButton = ({...args}:{
+	className?: string;
+	onClick?: React.MouseEventHandler<HTMLParagraphElement>;
+}) => {
+	return (
+		<p  className="flex items-center cursor-pointer hover:text-green-500" {...args}><FileDown size={16} className="mr-1" /> Download .txt</p>
+	)
+}
 
 const TestcaseValidationInstance = ({
 	value,
@@ -44,32 +75,39 @@ const TestcaseValidationInstance = ({
 				)}
 			</AccordionTrigger>
 			<AccordionContent>
-				<div className="flex gap-5 pl-1">
-					<div className="w-5/12">
-						<Label>Input</Label>
+				<div className="flex gap-5 px-1">
+					<div className="w-1/2">
+						<div className="flex justify-between">
+							<Label>Input</Label>
+							<DownloadMiniButton onClick={() => downloadTextfile("input.txt", inputValue)}/>
+						</div>
 						<Textarea
-							rows={inputValue?.split("\n").length}
+							rows={minimizer(inputValue)?.split("\n").length}
 							readOnly
 							className="mt-1 font-mono cursor-pointer"
-							value={inputValue}
+							value={minimizer(inputValue)}
 							onClick={() =>
 								navigator.clipboard.writeText(inputValue)
 							}
 						/>
 					</div>
-					<div className="w-5/12">
-						<Label>Output</Label>
+					<div className="w-1/2">
+					<div className="flex justify-between">
+							<Label>Output</Label>
+							<DownloadMiniButton onClick={() => downloadTextfile("output.txt", outputValue)}/>
+						</div>
 						<Textarea
-							rows={outputValue?.split("\n").length}
+							rows={minimizer(outputValue)?.split("\n").length}
 							readOnly
 							className="mt-1 font-mono cursor-pointer"
-							value={outputValue ?? ""}
+							value={minimizer(outputValue)}
 							onClick={() =>
 								navigator.clipboard.writeText(outputValue ?? "")
 							}
 						/>
+						
 					</div>
-					<div className="w-2/12">
+					{/* <div className="w-2/12">
 						<Label>Runtime Status</Label>
 						<p
 							className={`text-xl font-bold text-${
@@ -80,7 +118,7 @@ const TestcaseValidationInstance = ({
 						>
 							{status}
 						</p>
-					</div>
+					</div> */}
 				</div>
 			</AccordionContent>
 		</AccordionItem>

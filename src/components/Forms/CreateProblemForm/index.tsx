@@ -24,10 +24,10 @@ const TabList = [
 		value: "requirement",
 		label: "Requirement",
 	},
-	{
-		value: "privacy",
-		label: "Privacy",
-	},
+	// {
+	// 	value: "privacy",
+	// 	label: "Privacy",
+	// },
 	{
 		value: "groups",
 		label: "Manage Groups & Permissions",
